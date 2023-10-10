@@ -1,35 +1,44 @@
-console.log('helslos');
-// import http from 'http';
-let http = require('http');
+const express = require('express')
+// const path = require('path')
+const app = express()
 
-// let fs = require('fs');
-// let path = require('path');
-
-http.createServer((request,response) => {
-    console.log('wokr');
-    response.end('asdadsadas')
-}).listen(80);
+app.use(express.static(path.resolve(__dirname, 'source')))
 
 
+let jsson = [{
+    "name": "belchikstudio",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Andryxa311/belchikstudio.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/Andryxa311/belchikstudio/issues"
+    },
+    "homepage": "https://github.com/Andryxa311/belchikstudio#readme",
+    "dependencies": {
+      "express": "^4.18.2",
+      "nodemon": "^3.0.1"
+    }
+  }]
+app.get('/api', (req,res) => {
+    res.status(201).json(jsson)
+})
+
+app.get('*', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'source', 'index.html'))
+})
+  
+
+app.listen(3000);
 
 
 
-// http.createServer(function(req, res){
-//     if(req.url === "/"){
-//         fs.readFile('index.html', null, function(err, html){
-//             res.writeHead(200, {"Content-Type": "text/html"});
-//             res.end(html);
-//             });
-//     }
-//     else if(req.url.match('style.css')){
-//         var cssPath = path.join(__dirname, req.url);
-//         var fileStream = fs.createReadStream(cssPath);
-//         res.writeHead(200, {"Content-Type": "text/css"});
-//         fileStream.pipe(res);
-//     }
-//     else{
-//         res.writeHead(404, {"Content-Type": "text/plain"});
-//         res.end("404 Not Found");
-//     }
 
-// }).listen(3000, () => console.log('Server work'));
