@@ -8,7 +8,7 @@ let http = require('http');
 http.createServer((request,response) => {
     console.log('wokr');
     response.end('asdadsadas')
-}).listen(3000);
+}).listen(80);
 
 
 
