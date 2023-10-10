@@ -2,7 +2,7 @@ const express = require('express')
 // const path = require('path')
 const app = express()
 
-app.use(express.static(path.resolve(__dirname, 'source')))
+// app.use(express.static(path.resolve(__dirname, 'source')))
 
 
 let jsson = [{
@@ -28,12 +28,16 @@ let jsson = [{
       "nodemon": "^3.0.1"
     }
   }]
+let jsson1 = [{
+    "status": "call"
+}]
+
 app.get('/api', (req,res) => {
     res.status(201).json(jsson)
 })
 
 app.get('*', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'source', 'index.html'))
+    response.status(200).json(jsson1)
 })
   
 
