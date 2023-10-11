@@ -15,8 +15,6 @@ app.use(express.urlencoded({extended: false}))
 
 app.post('/api', (request, response) => {
     zayavki++
-    console.log(request.body['com_metod']);
-
     if (request.body['com_metod'] == 'tg') {
         metod = "Телеграмм"
     } else if (request.body['com_metod'] == 'wts') {
