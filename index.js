@@ -20,7 +20,7 @@ app.use(cors());
 //         console.log(err.response.body);
 //     })
 // })
-app.post('*', cors(), (request, response) => {
+app.post('*', (request, response) => {
     response.status(200)
     bot.sendMessage(530751804,"Сообщение дурака").catch(err => {
         console.log(err.code);
@@ -48,8 +48,4 @@ app.listen(3000)
 //         console.log(err.code);
 //         console.log(err.response.body);
 //     })
-// })
-// bot.sendMessage(530751804,"Ну че здарова ебать").catch(err => {
-//     console.log(err.code);
-//     console.log(err.response.body);
 // })
