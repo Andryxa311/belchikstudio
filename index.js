@@ -1,48 +1,55 @@
 const express = require('express')
-// const path = require('path')
+const cors = require('cors')
+
 const app = express()
 
-// app.use(express.static(path.resolve(__dirname, 'source')))
+const TelegramBot = require('node-telegram-bot-api');
+const token = '6681738989:AAFNhCWDYoVwIelUFUD1zR6GhQb-olVPp_M';
+const bot = new TelegramBot(token, { polling: true });
 
 
-let jsson = [{
-    "name": "belchikstudio",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/Andryxa311/belchikstudio.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-      "url": "https://github.com/Andryxa311/belchikstudio/issues"
-    },
-    "homepage": "https://github.com/Andryxa311/belchikstudio#readme",
-    "dependencies": {
-      "express": "^4.18.2",
-      "nodemon": "^3.0.1"
-    }
-  }]
-let jsson1 = [{
-    "status": "call"
-}]
+// app.get('/api', (req,res) => {
+//     res.status(201).json(jsson)
+// })
 
-app.get('/api', (req,res) => {
-    res.status(201).json(jsson)
+app.use(cors());
+// app.get('*', (request, response) => {
+//     response.status(200)
+//     bot.sendMessage(530751804,"Сообщение дурака").catch(err => {
+//         console.log(err.code);
+//         console.log(err.response.body);
+//     })
+// })
+app.post('*', cors(), (request, response) => {
+    response.status(200)
+    bot.sendMessage(530751804,"Сообщение дурака").catch(err => {
+        console.log(err.code);
+        console.log(err.response.body);
+    })
 })
+app.listen(3000)
 
-app.get('*', (request, response) => {
-    response.status(200).json(jsson1)
-})
-  
+// bot.on('message', async massage => {
+//     const text = massage.text;
+//     const chatID = massage.from.id;
+//     const is_bot = massage.from.is_bot;
+//     const user_name = massage.from.username;
+//     const date = massage.date;
+//     const massageID = massage.message_id;
+    
+//     console.log(text);
+//     console.log(chatID);
+//     console.log(is_bot);
+//     console.log(user_name);
+//     console.log(date);
+//     console.log(massageID);
 
-app.listen(3000);
-
-
-
-
+//     bot.sendMessage(chatID,"Ну че здарова ебать").catch(err => {
+//         console.log(err.code);
+//         console.log(err.response.body);
+//     })
+// })
+// bot.sendMessage(530751804,"Ну че здарова ебать").catch(err => {
+//     console.log(err.code);
+//     console.log(err.response.body);
+// })
