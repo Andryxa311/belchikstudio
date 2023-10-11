@@ -41,7 +41,33 @@ bot.sendMessage(530751804, 'Сервер перезагрузился, пров�
     console.log(err.response.body);
 })
 
-
+bot.on('message', async massage => {
+    const text = massage.text;
+    const chatID = massage.from.id;
+    const is_bot = massage.from.is_bot;
+    const user_name = massage.from.username;
+    const date = massage.date;
+    const massageID = massage.message_id;
+    if (chatID === 530751804) {
+        bot.sendMessage(chatID, 'Батя пишет.\nУ тебя реально большой член !')
+        .catch(err => {
+            console.log(err.code);
+            console.log(err.response.body);
+        })
+    } else if (chatID === 5035389469) {
+        bot.sendMessage(chatID, 'Это пишет Юлечка. Ты очень красивая и я тебя очень люблю')
+        .catch(err => {
+        console.log(err.code);
+        console.log(err.response.body);
+    })
+    }else {
+        bot.sendMessage(chatID, 'Иди теряйся от сюда! Это СЛУЖЕБНЫЙ БОТ')
+            .catch(err => {
+            console.log(err.code);
+            console.log(err.response.body);
+        })
+    }
+  }); 
 
 
 
